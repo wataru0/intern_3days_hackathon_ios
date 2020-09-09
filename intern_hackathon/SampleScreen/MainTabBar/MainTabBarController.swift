@@ -12,8 +12,8 @@ final class MainTabBarController: UITabBarController {
         let sampleSearchViewController: UINavigationController = R.storyboard.sampleSearch.instantiateInitialViewController()!
 
         // 仮ViewController。必要に応じて置き換えてください。
-        let dummyViewController = UIViewController()
+        let myViewController: UIViewController = R.storyboard.eventList.instantiateInitialViewController()!
 
-        setViewControllers([sampleSearchViewController, dummyViewController], animated: false)
+        setViewControllers([sampleSearchViewController, myViewController], animated: false)
     }
 }
