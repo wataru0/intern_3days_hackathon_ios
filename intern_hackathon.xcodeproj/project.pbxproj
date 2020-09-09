@@ -26,6 +26,10 @@
 		088E557D24D7190300A2FE3E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E557C24D7190300A2FE3E /* MainTabBarController.swift */; };
 		08C5FE2624CD7A8B007100CA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5FE2524CD7A8B007100CA /* Event.swift */; };
 		08EF05C524C37A6600129792 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083FD71524C34D2300383122 /* Rswift.framework */; };
+		17740EBE25089CC3009CDF15 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740EBD25089CC3009CDF15 /* EventListViewController.swift */; };
+		17740EC025089CDC009CDF15 /* EventList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17740EBF25089CDC009CDF15 /* EventList.storyboard */; };
+		17740EC325089CFE009CDF15 /* EventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740EC125089CFD009CDF15 /* EventListCell.swift */; };
+		17740EC425089CFE009CDF15 /* EventListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17740EC225089CFE009CDF15 /* EventListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +55,10 @@
 		088E557924D669AF00A2FE3E /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		088E557C24D7190300A2FE3E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		08C5FE2524CD7A8B007100CA /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		17740EBD25089CC3009CDF15 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		17740EBF25089CDC009CDF15 /* EventList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventList.storyboard; sourceTree = "<group>"; };
+		17740EC125089CFD009CDF15 /* EventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCell.swift; sourceTree = "<group>"; };
+		17740EC225089CFE009CDF15 /* EventListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,8 +202,20 @@
 		08CC377D24D9870200438D2F /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				17740EBC25089C1E009CDF15 /* EventList */,
 			);
 			path = Screen;
+			sourceTree = "<group>";
+		};
+		17740EBC25089C1E009CDF15 /* EventList */ = {
+			isa = PBXGroup;
+			children = (
+				17740EBD25089CC3009CDF15 /* EventListViewController.swift */,
+				17740EBF25089CDC009CDF15 /* EventList.storyboard */,
+				17740EC125089CFD009CDF15 /* EventListCell.swift */,
+				17740EC225089CFE009CDF15 /* EventListCell.xib */,
+			);
+			path = EventList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,10 +280,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				088E557624D660B700A2FE3E /* SampleEventListCell.xib in Resources */,
+				17740EC025089CDC009CDF15 /* EventList.storyboard in Resources */,
 				082CF75F24D569E7001F7680 /* SampleSearch.storyboard in Resources */,
 				083FD70C24C33D2B00383122 /* LaunchScreen.storyboard in Resources */,
 				083FD70924C33D2B00383122 /* Assets.xcassets in Resources */,
 				082CF76824D5A82F001F7680 /* SampleEventList.storyboard in Resources */,
+				17740EC425089CFE009CDF15 /* EventListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17740EC325089CFE009CDF15 /* EventListCell.swift in Sources */,
 				0841933724D9505800BFCBD3 /* Logger.swift in Sources */,
 				088E557A24D669AF00A2FE3E /* Array+Extensions.swift in Sources */,
 				083FD70024C33D2900383122 /* AppDelegate.swift in Sources */,
@@ -346,6 +369,7 @@
 				08C5FE2624CD7A8B007100CA /* Event.swift in Sources */,
 				0841933924D950FF00BFCBD3 /* ErrorType.swift in Sources */,
 				082CF76124D56DE4001F7680 /* SampleSearchViewController.swift in Sources */,
+				17740EBE25089CC3009CDF15 /* EventListViewController.swift in Sources */,
 				086F846524D997A00084571E /* UIAlertController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
