@@ -30,7 +30,6 @@
 		17740EC025089CDC009CDF15 /* EventList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17740EBF25089CDC009CDF15 /* EventList.storyboard */; };
 		17740EC325089CFE009CDF15 /* EventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740EC125089CFD009CDF15 /* EventListCell.swift */; };
 		17740EC425089CFE009CDF15 /* EventListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17740EC225089CFE009CDF15 /* EventListCell.xib */; };
-		17740EC62508B3AF009CDF15 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740EC52508B3AF009CDF15 /* SearchViewController.swift */; };
 		17740EC92509CF1C009CDF15 /* SortMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740EC82509CF1C009CDF15 /* SortMenuViewController.swift */; };
 		17740ECB2509CF3E009CDF15 /* SortMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17740ECA2509CF3E009CDF15 /* SortMenu.storyboard */; };
 		17740ECE2509F54F009CDF15 /* BookmarkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740ECD2509F54E009CDF15 /* BookmarkListViewController.swift */; };
@@ -68,7 +67,6 @@
 		17740EBF25089CDC009CDF15 /* EventList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventList.storyboard; sourceTree = "<group>"; };
 		17740EC125089CFD009CDF15 /* EventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCell.swift; sourceTree = "<group>"; };
 		17740EC225089CFE009CDF15 /* EventListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListCell.xib; sourceTree = "<group>"; };
-		17740EC52508B3AF009CDF15 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		17740EC82509CF1C009CDF15 /* SortMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMenuViewController.swift; sourceTree = "<group>"; };
 		17740ECA2509CF3E009CDF15 /* SortMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SortMenu.storyboard; sourceTree = "<group>"; };
 		17740ECD2509F54E009CDF15 /* BookmarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewController.swift; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 				17740EBF25089CDC009CDF15 /* EventList.storyboard */,
 				17740EC125089CFD009CDF15 /* EventListCell.swift */,
 				17740EC225089CFE009CDF15 /* EventListCell.xib */,
-				17740EC52508B3AF009CDF15 /* SearchViewController.swift */,
 			);
 			path = EventList;
 			sourceTree = "<group>";
@@ -462,7 +459,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17740EC62508B3AF009CDF15 /* SearchViewController.swift in Sources */,
 				17740EC325089CFE009CDF15 /* EventListCell.swift in Sources */,
 				0841933724D9505800BFCBD3 /* Logger.swift in Sources */,
 				17740EC92509CF1C009CDF15 /* SortMenuViewController.swift in Sources */,

@@ -16,10 +16,12 @@ class MainViewController: UIViewController {
         let mainSB: UIStoryboard = UIStoryboard(name: "EventList", bundle: nil)
         guard let mainViewController = mainSB.instantiateInitialViewController() else { return }
         mainViewController.title = "main"
-        let secondViewController = UIViewController()
-        secondViewController.title = "bookmarks"
         
-        let pagingViewController = PagingViewController(viewControllers: [mainViewController, secondViewController])
+        let bookmarkSB: UIStoryboard = UIStoryboard(name: "BookmarkList", bundle: nil)
+        guard let bookmarkViewController = bookmarkSB.instantiateInitialViewController() else { return }
+        bookmarkViewController.title = "bookmarks"
+        
+        let pagingViewController = PagingViewController(viewControllers: [mainViewController, bookmarkViewController])
         
         // viewに追加
         self.addChild(pagingViewController)
