@@ -8,7 +8,7 @@ final class APIClient {
         
         var urlComps = URLComponents(string: "https://connpass.com/api/v1/event")!
         let queryItems = [URLQueryItem(name: "count", value: "20"),
-        URLQueryItem(name: "keyword", value: keyword)]
+        URLQueryItem(name: "keyword", value: keyword), URLQueryItem(name: "order", value: "3")]
         urlComps.queryItems = queryItems
         
         let session = URLSession(configuration: .default)

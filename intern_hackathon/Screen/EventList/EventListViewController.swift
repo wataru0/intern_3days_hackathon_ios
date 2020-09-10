@@ -5,16 +5,17 @@
 //  Created by 岡本航昇 on 2020/09/09.
 //  Copyright © 2020 caraquri. All rights reserved.
 //
+import BTNavigationDropdownMenu
 import SafariServices
 import UIKit
 
 class EventListViewController: UIViewController {
     
-    // weak 消した
-    //@IBOutlet var tableView: UITableView!
     var tableView: UITableView!
     var searchController = UISearchController()
     var searchBar: UISearchBar!
+    
+    var sortMenu: BTNavigationDropdownMenu!
     
     // APIレスポンスをデコードしたもの
     private var events: [Event] = []
@@ -42,8 +43,9 @@ class EventListViewController: UIViewController {
         searchBar.placeholder = "キーワードを入力"
                 
         // searchBar 設置
-        // ここ別のインスタンス渡していたらエラー
         tableView.tableHeaderView = searchBar
+        
+        setSortMenu()
         
         view.addSubview(tableView)
         
@@ -66,6 +68,11 @@ class EventListViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func setSortMenu() {
+        let sortItems = ["新着順", "人気順"]
+        
     }
 }
 

@@ -31,9 +31,11 @@
 		17740EC325089CFE009CDF15 /* EventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740EC125089CFD009CDF15 /* EventListCell.swift */; };
 		17740EC425089CFE009CDF15 /* EventListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17740EC225089CFE009CDF15 /* EventListCell.xib */; };
 		17740EC62508B3AF009CDF15 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740EC52508B3AF009CDF15 /* SearchViewController.swift */; };
+		2017271045FB6B89A55D92F2 /* Pods_intern_hackathon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C21F34E1FD044BE6C41F8B /* Pods_intern_hackathon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07B54C4CD660FE430CFB5638 /* Pods-intern_hackathon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intern_hackathon.debug.xcconfig"; path = "Target Support Files/Pods-intern_hackathon/Pods-intern_hackathon.debug.xcconfig"; sourceTree = "<group>"; };
 		082CF75E24D569E7001F7680 /* SampleSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleSearch.storyboard; sourceTree = "<group>"; };
 		082CF76024D56DE4001F7680 /* SampleSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSearchViewController.swift; sourceTree = "<group>"; };
 		082CF76224D59281001F7680 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -61,6 +63,8 @@
 		17740EC125089CFD009CDF15 /* EventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCell.swift; sourceTree = "<group>"; };
 		17740EC225089CFE009CDF15 /* EventListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListCell.xib; sourceTree = "<group>"; };
 		17740EC52508B3AF009CDF15 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		43C21F34E1FD044BE6C41F8B /* Pods_intern_hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intern_hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A39CFCAD63C3D6FA4DD5CDF6 /* Pods-intern_hackathon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intern_hackathon.release.xcconfig"; path = "Target Support Files/Pods-intern_hackathon/Pods-intern_hackathon.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 			files = (
 				08EF05C524C37A6600129792 /* Rswift.framework in Frameworks */,
 				083FD71724C34D2300383122 /* Nuke.framework in Frameworks */,
+				2017271045FB6B89A55D92F2 /* Pods_intern_hackathon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 				083FD6FE24C33D2900383122 /* intern_hackathon */,
 				083FD6FD24C33D2900383122 /* Products */,
 				083FD71324C34D2300383122 /* Frameworks */,
+				49CE6C293BB931D5A9E0F7E8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +151,7 @@
 				083FD71624C34D2300383122 /* APIKit.framework */,
 				083FD71424C34D2300383122 /* Nuke.framework */,
 				083FD71524C34D2300383122 /* Rswift.framework */,
+				43C21F34E1FD044BE6C41F8B /* Pods_intern_hackathon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -221,6 +228,16 @@
 			path = EventList;
 			sourceTree = "<group>";
 		};
+		49CE6C293BB931D5A9E0F7E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				07B54C4CD660FE430CFB5638 /* Pods-intern_hackathon.debug.xcconfig */,
+				A39CFCAD63C3D6FA4DD5CDF6 /* Pods-intern_hackathon.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -228,12 +245,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 083FD71024C33D2B00383122 /* Build configuration list for PBXNativeTarget "intern_hackathon" */;
 			buildPhases = (
+				766F2FDE2AF0A5485D318158 /* [CP] Check Pods Manifest.lock */,
 				083FD71F24C371BF00383122 /* R.Swift */,
 				083FD6F824C33D2900383122 /* Sources */,
 				083FD6F924C33D2900383122 /* Frameworks */,
 				083FD6FA24C33D2900383122 /* Resources */,
 				08A6C8E824C46FA600A812DF /* SwiftLint */,
 				083FD71E24C36F5700383122 /* Run Script Carthage */,
+				F852573BE480FBEBBC20CCD6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -329,7 +348,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/intern_hackathon/R.generated.swift,
+				"$SRCROOT/intern_hackathon/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -352,6 +371,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		766F2FDE2AF0A5485D318158 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-intern_hackathon-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F852573BE480FBEBBC20CCD6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-intern_hackathon/Pods-intern_hackathon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-intern_hackathon/Pods-intern_hackathon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-intern_hackathon/Pods-intern_hackathon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -510,6 +568,7 @@
 		};
 		083FD71124C33D2B00383122 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07B54C4CD660FE430CFB5638 /* Pods-intern_hackathon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -534,6 +593,7 @@
 		};
 		083FD71224C33D2B00383122 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A39CFCAD63C3D6FA4DD5CDF6 /* Pods-intern_hackathon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
