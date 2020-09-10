@@ -14,7 +14,7 @@ final class APIClient {
         let session = URLSession(configuration: .default)
         guard let url = urlComps.url else { return }
         let request = URLRequest(url: url)
-        
+
         Logger.printRequest(request: request)
         let task = session.dataTask(with: request, completionHandler: {data, response, error in
             if error != nil {

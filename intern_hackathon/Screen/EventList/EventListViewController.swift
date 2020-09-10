@@ -14,6 +14,7 @@ class EventListViewController: UIViewController {
     //@IBOutlet var tableView: UITableView!
     var tableView: UITableView!
     var searchController = UISearchController()
+    var searchBar: UISearchBar!
     
     // APIレスポンスをデコードしたもの
     private var events: [Event] = []
@@ -21,34 +22,59 @@ class EventListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        // iOS13未満
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: self.view.frame.width, height: self.view.frame.height))
+        
         tableView.register(R.nib.eventListCell)
         tableView.dataSource = self
         tableView.delegate = self
         
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.sizeToFit()
+        // searchBarの作成
+        searchBar = UISearchBar()
+        // searchBarのデリゲートを自分が受け取るということ
+        searchBar.delegate = self
         
+        //大きさの指定
+        searchBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: barHeight)
+        //キャンセルボタンの追加
+        searchBar.showsCancelButton = true
+        searchBar.placeholder = "キーワードを入力"
+                
         // searchBar 設置
-        tableView.tableHeaderView = searchController.searchBar
+        // ここ別のインスタンス渡していたらエラー
+        tableView.tableHeaderView = searchBar
         
         view.addSubview(tableView)
         
     }
     
-    func searchEvents() {
-        
+    // searchBarに入力された文字列で検索する
+    func searchEvents(_ searchText: String) {
+        APIClient.fetchEvents(keyword: searchText) { [weak self] result in
+            // URLSessionはbackground threadで行われる為UIの更新を明示的にMain Theadで行う
+            DispatchQueue.main.sync {
+                switch result {
+                case .success(let events):
+                    self?.events = events
+                    self?.tableView.reloadData()
+                    
+                case .failure(let error):
+                    let alert = UIAlertController.createErrorAlert(error)
+                    self?.present(alert, animated: true)
+                    
+                }
+            }
+        }
     }
 }
 
-extension EventListViewController: UISearchResultsUpdating {
-    // 文字が入力される度に呼ばれる
-    func updateSearchResults(for searchController: UISearchController) {
-        tableView.reloadData()
+extension EventListViewController: UISearchBarDelegate {
+    // searchBarのテキストが変更される度に呼ばれる
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        searchEvents(searchText)
     }
-    
 }
 
 extension EventListViewController: UITableViewDataSource {
@@ -69,9 +95,10 @@ extension EventListViewController: UITableViewDataSource {
 
 extension EventListViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
+    // 高さ指定しないと動的に計算してくれる．
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
