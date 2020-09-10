@@ -1,16 +1,16 @@
 PODS:
-  - BTNavigationDropdownMenu (0.5)
+  - Parchment (2.4.0)
 
 DEPENDENCIES:
-  - BTNavigationDropdownMenu
+  - Parchment
 
 SPEC REPOS:
   trunk:
-    - BTNavigationDropdownMenu
+    - Parchment
 
 SPEC CHECKSUMS:
-  BTNavigationDropdownMenu: ba3a26fdb6a56c4721c31df8a0875106c259663a
+  Parchment: 002785473861582385db5c6725165353c500198e
 
-PODFILE CHECKSUM: 5d3d483f964d18023e66ad789d0ecf42aeea880d
+PODFILE CHECKSUM: acb3493fdf9e0c3780f300e1659921d3cd7f144d
 
 COCOAPODS: 1.9.1

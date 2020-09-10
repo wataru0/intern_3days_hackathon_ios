@@ -17,6 +17,12 @@ disabled_rules:
 - nesting
 - switch_case_on_newline
 
+# OSSライブラリはルールの対象外にする.厳しすぎるよ．
+excluded:
+- Pods/
+- Podfile
+- Podfile.lock
+
 # 追加するルール
 opt_in_rules:
 - closure_end_indentation

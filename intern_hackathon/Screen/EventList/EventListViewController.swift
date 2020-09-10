@@ -5,7 +5,8 @@
 //  Created by 岡本航昇 on 2020/09/09.
 //  Copyright © 2020 caraquri. All rights reserved.
 //
-import BTNavigationDropdownMenu
+//import BTNavigationDropdownMenu
+import Parchment
 import SafariServices
 import UIKit
 
@@ -15,7 +16,7 @@ class EventListViewController: UIViewController {
     var searchController = UISearchController()
     var searchBar: UISearchBar!
     
-    var sortMenu: BTNavigationDropdownMenu!
+    // var sortMenu: BTNavigationDropdownMenu!
     
     // APIレスポンスをデコードしたもの
     private var events: [Event] = []
@@ -71,8 +72,13 @@ class EventListViewController: UIViewController {
     }
     
     func setSortMenu() {
-        let sortItems = ["新着順", "人気順"]
-        
+//        let sortItems = ["新着順", "人気順"]
+//        self.navigationController?.navigationBar.isTranslucent = false
+//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green:180/255.0, blue:220/255.0, alpha: 1.0)
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        sortMenu = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "menu", items: sortItems)
+//
+//        self.navigationItem.titleView = sortMenu
     }
 }
 
@@ -90,10 +96,17 @@ extension EventListViewController: UITableViewDataSource {
         return events.count
     }
     
+    // セル作成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.eventListCell, for: indexPath),
             let event = events[safe: indexPath.row] else { return UITableViewCell() }
+        
+        // セルのタグにevent_idを登録
+        guard let eventID: Int = event.eventID else {
+            return UITableViewCell()
+        }
+        cell.tag = eventID
         
         cell.set(event)
         return cell
@@ -102,11 +115,7 @@ extension EventListViewController: UITableViewDataSource {
 
 extension EventListViewController: UITableViewDelegate {
     
-    // 高さ指定しないと動的に計算してくれる．
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100
-//    }
-    
+    // セル選択した時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         guard let urlString = events[safe: indexPath.row]?.eventURL,

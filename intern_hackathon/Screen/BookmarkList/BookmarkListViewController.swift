@@ -6,4 +6,15 @@
 //  Copyright © 2020 caraquri. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class BookmarkListViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
+}

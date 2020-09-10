@@ -8,5 +8,6 @@ target 'intern_hackathon' do
   # Pods for intern_hackathon
   # pod 'XLActionController', '~>5.0.2'
   # pod 'DropdownMenu'
-  pod 'BTNavigationDropdownMenu'
+  # pod 'BTNavigationDropdownMenu'
+  pod 'Parchment'
 end
