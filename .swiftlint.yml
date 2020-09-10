@@ -1,7 +1,8 @@
-# Lint対象から除外するパス
+# Lint対象から除外するパス,OSSライブラリは対象外にする！
 excluded:
 - Carthage
 - intern_hackathon/R.generated.swift
+- Pods
 
 # デフォルトだと厳しすぎるため
 line_length:
@@ -16,12 +17,6 @@ disabled_rules:
 - trailing_whitespace
 - nesting
 - switch_case_on_newline
-
-# OSSライブラリはルールの対象外にする.厳しすぎるよ．
-excluded:
-- Pods/
-- Podfile
-- Podfile.lock
 
 # 追加するルール
 opt_in_rules:

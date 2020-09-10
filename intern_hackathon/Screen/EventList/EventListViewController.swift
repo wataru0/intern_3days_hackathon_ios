@@ -50,6 +50,20 @@ class EventListViewController: UIViewController {
         
         view.addSubview(tableView)
         
+        // Parchment
+        let firstViewController = UIViewController()
+        firstViewController.title = "tab1"
+        let secondViewController = UIViewController()
+        secondViewController.title = "tab2"
+        
+        let pagingViewController = PagingViewController(viewControllers: [firstViewController, secondViewController])
+        
+        // viewに追加
+        self.addChild(pagingViewController)
+        self.view.addSubview(pagingViewController.view)
+        pagingViewController.didMove(toParent: self)
+        pagingViewController.view.translatesAutoresizingMaskIntoConstraints = false
+
     }
     
     // searchBarに入力された文字列で検索する
