@@ -35,6 +35,8 @@
 		17740ECB2509CF3E009CDF15 /* SortMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17740ECA2509CF3E009CDF15 /* SortMenu.storyboard */; };
 		17740ECE2509F54F009CDF15 /* BookmarkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740ECD2509F54E009CDF15 /* BookmarkListViewController.swift */; };
 		17740ED02509F594009CDF15 /* BookmarkList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17740ECF2509F594009CDF15 /* BookmarkList.storyboard */; };
+		17740ED3250A07A4009CDF15 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740ED2250A07A4009CDF15 /* MainViewController.swift */; };
+		17740ED5250A08AD009CDF15 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17740ED4250A08AC009CDF15 /* MainView.storyboard */; };
 		2017271045FB6B89A55D92F2 /* Pods_intern_hackathon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C21F34E1FD044BE6C41F8B /* Pods_intern_hackathon.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,8 @@
 		17740ECA2509CF3E009CDF15 /* SortMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SortMenu.storyboard; sourceTree = "<group>"; };
 		17740ECD2509F54E009CDF15 /* BookmarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewController.swift; sourceTree = "<group>"; };
 		17740ECF2509F594009CDF15 /* BookmarkList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookmarkList.storyboard; sourceTree = "<group>"; };
+		17740ED2250A07A4009CDF15 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		17740ED4250A08AC009CDF15 /* MainView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
 		43C21F34E1FD044BE6C41F8B /* Pods_intern_hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intern_hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A39CFCAD63C3D6FA4DD5CDF6 /* Pods-intern_hackathon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intern_hackathon.release.xcconfig"; path = "Target Support Files/Pods-intern_hackathon/Pods-intern_hackathon.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +223,7 @@
 		08CC377D24D9870200438D2F /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				17740ED1250A0775009CDF15 /* MainView */,
 				17740ECC2509F4F1009CDF15 /* BookmarkList */,
 				17740EC72509CEE8009CDF15 /* SortMenu */,
 				17740EBC25089C1E009CDF15 /* EventList */,
@@ -254,6 +259,15 @@
 				17740ECF2509F594009CDF15 /* BookmarkList.storyboard */,
 			);
 			path = BookmarkList;
+			sourceTree = "<group>";
+		};
+		17740ED1250A0775009CDF15 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				17740ED2250A07A4009CDF15 /* MainViewController.swift */,
+				17740ED4250A08AC009CDF15 /* MainView.storyboard */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		49CE6C293BB931D5A9E0F7E8 /* Pods */ = {
@@ -330,6 +344,7 @@
 			files = (
 				088E557624D660B700A2FE3E /* SampleEventListCell.xib in Resources */,
 				17740EC025089CDC009CDF15 /* EventList.storyboard in Resources */,
+				17740ED5250A08AD009CDF15 /* MainView.storyboard in Resources */,
 				082CF75F24D569E7001F7680 /* SampleSearch.storyboard in Resources */,
 				083FD70C24C33D2B00383122 /* LaunchScreen.storyboard in Resources */,
 				083FD70924C33D2B00383122 /* Assets.xcassets in Resources */,
@@ -462,6 +477,7 @@
 				0841933924D950FF00BFCBD3 /* ErrorType.swift in Sources */,
 				082CF76124D56DE4001F7680 /* SampleSearchViewController.swift in Sources */,
 				17740EBE25089CC3009CDF15 /* EventListViewController.swift in Sources */,
+				17740ED3250A07A4009CDF15 /* MainViewController.swift in Sources */,
 				086F846524D997A00084571E /* UIAlertController+Extensions.swift in Sources */,
 				17740ECE2509F54F009CDF15 /* BookmarkListViewController.swift in Sources */,
 			);
