@@ -25,7 +25,7 @@ class EventListCell: UITableViewCell {
     // ブックマーク情報を保持する
     let userDefaults = UserDefaults.standard
     
-    var bookmark: BookmarkCellData?
+    //var bookmark: BookmarkCellData?
     
     func set(_ event: Event) {
         titleTextLabel.text = event.title
@@ -41,15 +41,15 @@ class EventListCell: UITableViewCell {
     }
     
     // bookmarkをセットする関数
-    func set(_ bookmark: BookmarkCellData) {
-        self.bookmark = bookmark
-        titleTextLabel.text = bookmark.title
-        descriptionTextLabel.text = "開催地: " + bookmark.address
-        
-        // bookmarkスイッチ ON にする
-        bookmarkSwitch.setOn(true, animated: false)
-        
-    }
+//    func set(_ bookmark: BookmarkCellData) {
+//        self.bookmark = bookmark
+//        titleTextLabel.text = bookmark.title
+//        descriptionTextLabel.text = "開催地: " + bookmark.address
+//
+//        // bookmarkスイッチ ON にする
+//        bookmarkSwitch.setOn(true, animated: false)
+//
+//    }
     
     @IBAction func switchTapped(_ sender: UISwitch) {
         // UISwitchのon/off判定
@@ -58,9 +58,17 @@ class EventListCell: UITableViewCell {
             print(self.tag)
             
             // eventIDとそのスイッチの情報をuserDefaultsに保存
-            guard var bookmarks = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
-            bookmarks.append(self.tag)
-            userDefaults.set(bookmarks, forKey: "bookmarks")
+            // すでに格納されている場合
+            if UserDefaults.standard.array(forKey: "bookmarks") != nil {
+                guard var bookmarks = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
+                bookmarks.append(self.tag)
+                userDefaults.set(bookmarks, forKey: "bookmarks")
+            } else {
+                var bookmarks: [Int] = []
+                bookmarks.append(self.tag)
+                userDefaults.set(bookmarks, forKey: "bookmarks")
+            }
+            //guard var bookmarks = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
             
             // eventIDにブックマーク情報を紐付け
             userDefaults.set(true, forKey: String(self.tag))

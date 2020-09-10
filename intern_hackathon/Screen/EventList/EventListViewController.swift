@@ -47,6 +47,11 @@ class EventListViewController: UIViewController {
         view.addSubview(tableView)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     // searchBarに入力された文字列で検索する
     func searchEvents(_ searchText: String) {
         APIClient.fetchEvents(keyword: searchText) { [weak self] result in

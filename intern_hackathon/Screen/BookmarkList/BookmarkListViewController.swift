@@ -22,6 +22,34 @@ class BookmarkListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let eventIDs = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
+        searchEvents(eventIDs)
+        tableView.reloadData()
+        
+        print(eventIDs)
+    }
+    
+    func searchEvents(_ eventIDs: [Int]) {
+        APIClient.fetchEventsByEventID(eventID: eventIDs) { [weak self] result in
+            // URLSessionはbackground threadで行われる為UIの更新を明示的にMain Theadで行う
+            DispatchQueue.main.sync {
+                switch result {
+                case .success(let events):
+                    self?.events = events
+                    self?.tableView.reloadData()
+                    
+                case .failure(let error):
+                    let alert = UIAlertController.createErrorAlert(error)
+                    self?.present(alert, animated: true)
+                    
+                }
+            }
+        }
+    }
 }
 
 extension BookmarkListViewController: UITableViewDataSource {
