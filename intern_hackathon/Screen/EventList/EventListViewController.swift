@@ -16,8 +16,6 @@ class EventListViewController: UIViewController {
     var searchController = UISearchController()
     var searchBar: UISearchBar!
     
-    // var sortMenu: BTNavigationDropdownMenu!
-    
     // APIレスポンスをデコードしたもの
     private var events: [Event] = []
 
@@ -26,7 +24,7 @@ class EventListViewController: UIViewController {
     
         // iOS13未満
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-        tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: self.view.frame.width, height: self.view.frame.height))
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         
         tableView.register(R.nib.eventListCell)
         tableView.dataSource = self
@@ -45,8 +43,6 @@ class EventListViewController: UIViewController {
                 
         // searchBar 設置
         tableView.tableHeaderView = searchBar
-        
-        setSortMenu()
         
         view.addSubview(tableView)
     }
@@ -70,15 +66,6 @@ class EventListViewController: UIViewController {
         }
     }
     
-    func setSortMenu() {
-//        let sortItems = ["新着順", "人気順"]
-//        self.navigationController?.navigationBar.isTranslucent = false
-//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green:180/255.0, blue:220/255.0, alpha: 1.0)
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        sortMenu = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "menu", items: sortItems)
-//
-//        self.navigationItem.titleView = sortMenu
-    }
 }
 
 extension EventListViewController: UISearchBarDelegate {
