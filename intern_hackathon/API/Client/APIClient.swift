@@ -76,8 +76,8 @@ final class APIClient {
         
         var queryItems: [URLQueryItem] = [URLQueryItem(name: "order", value: "3")]
         
-        for k in keyword {
-            queryItems.append(URLQueryItem(name: "event_id", value: k))
+        for kw in keyword {
+            queryItems.append(URLQueryItem(name: "event_id", value: kw))
         }
         urlComps.queryItems = queryItems
         
