@@ -17,10 +17,18 @@ class BookmarkListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        
         tableView.register(R.nib.eventListCell)
         // UITableViewのdelegateらを受け持つ
         tableView.dataSource = self
         tableView.delegate = self
+        
+        let voidView = UIView()
+        voidView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: barHeight)
+        
+        tableView.tableHeaderView = voidView
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,12 +36,19 @@ class BookmarkListViewController: UIViewController {
         
         guard let eventIDs = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
         if eventIDs.isEmpty {
+            tableView.reloadData()
             return
         }
         searchEvents(eventIDs)
         tableView.reloadData()
         
         print(eventIDs)
+    }
+    
+    // tabで遷移したときにviewWillAppearが呼ばれない？
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tableView.reloadData()
     }
     
     func searchEvents(_ eventIDs: [Int]) {

@@ -78,6 +78,12 @@ extension EventListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
         searchEvents(searchText)
+        
+        if searchText == "Python" {
+            let token = UISearchToken(icon: nil, text: "Python")
+            self.searchBar.searchTextField.insertToken(token, at: 0)
+            self.searchBar.searchTextField.tokenBackgroundColor = .systemBlue
+        }
     }
 }
 

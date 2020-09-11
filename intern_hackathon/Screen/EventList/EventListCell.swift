@@ -66,6 +66,8 @@ class EventListCell: UITableViewCell {
     @IBAction func bookmarkButtonTapped(_ sender: Any) {
         bFlag = !bFlag
         if bFlag {
+            // 多重タップ防止
+            //bookmarkButton.isEnabled = false
             bookmarkButton.setImage(UIImage(named: "bookOn"), for: .normal)
             
             // eventIDとそのスイッチの情報をuserDefaultsに保存
@@ -81,15 +83,21 @@ class EventListCell: UITableViewCell {
             }
             
             userDefaults.set(true, forKey: String(self.tag))
-
+            //bookmarkButton.isEnabled = true
         } else {
+            // 多重タップ防止
+            //bookmarkButton.isEnabled = false
             bookmarkButton.setImage(UIImage(named: "bookOff"), for: .normal)
             
             // UserDefaultskからeventID配列取り出し
            guard var bookmarks = userDefaults.array(forKey: "bookmarks") as? [Int] else { return }
             guard let index = bookmarks.firstIndex(of: self.tag) else { return }
             // 配列から削除
-            bookmarks.remove(at: index)
+            if index == 0 {
+                bookmarks.removeAll()
+            } else {
+                bookmarks.remove(at: index)
+            }
             
             // 値更新
             userDefaults.set(bookmarks, forKey: "bookmarks")
@@ -110,6 +118,7 @@ class EventListCell: UITableViewCell {
 //            }
             
             userDefaults.set(false, forKey: String(self.tag))
+            //bookmarkButton.isEnabled = true
         }
     }
     
