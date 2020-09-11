@@ -34,4 +34,28 @@ class MainViewController: UIViewController {
         pagingViewController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         pagingViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
+    
 }
+
+//extension MainViewController: PagingViewControllerDataSource {
+//    func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
+//        return 2
+//    }
+//
+//    func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
+//        if index == 0 {
+//            return EventListViewController()
+//        }
+//        if index == 1 {
+//            return BookmarkListViewController()
+//        }
+//    }
+//    // メニュータイトルの設定と、選択中のVCの連動設定
+//    func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
+//        if index == 0 {
+//
+//        }
+//    }
+//
+//}
+

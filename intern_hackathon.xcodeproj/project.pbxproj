@@ -26,6 +26,9 @@
 		088E557D24D7190300A2FE3E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E557C24D7190300A2FE3E /* MainTabBarController.swift */; };
 		08C5FE2624CD7A8B007100CA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5FE2524CD7A8B007100CA /* Event.swift */; };
 		08EF05C524C37A6600129792 /* Rswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083FD71524C34D2300383122 /* Rswift.framework */; };
+		176EB171250B411B008E50A6 /* Notification+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB170250B411B008E50A6 /* Notification+extensions.swift */; };
+		176EB174250B4D8C008E50A6 /* BookmarkListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB172250B4D8C008E50A6 /* BookmarkListCell.swift */; };
+		176EB175250B4D8C008E50A6 /* BookmarkListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 176EB173250B4D8C008E50A6 /* BookmarkListCell.xib */; };
 		17740EBE25089CC3009CDF15 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740EBD25089CC3009CDF15 /* EventListViewController.swift */; };
 		17740EC025089CDC009CDF15 /* EventList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17740EBF25089CDC009CDF15 /* EventList.storyboard */; };
 		17740EC325089CFE009CDF15 /* EventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740EC125089CFD009CDF15 /* EventListCell.swift */; };
@@ -63,6 +66,9 @@
 		088E557924D669AF00A2FE3E /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		088E557C24D7190300A2FE3E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		08C5FE2524CD7A8B007100CA /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		176EB170250B411B008E50A6 /* Notification+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+extensions.swift"; sourceTree = "<group>"; };
+		176EB172250B4D8C008E50A6 /* BookmarkListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkListCell.swift; sourceTree = "<group>"; };
+		176EB173250B4D8C008E50A6 /* BookmarkListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookmarkListCell.xib; sourceTree = "<group>"; };
 		17740EBD25089CC3009CDF15 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		17740EBF25089CDC009CDF15 /* EventList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventList.storyboard; sourceTree = "<group>"; };
 		17740EC125089CFD009CDF15 /* EventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCell.swift; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 		088E557824D6699500A2FE3E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				176EB170250B411B008E50A6 /* Notification+extensions.swift */,
 				088E557924D669AF00A2FE3E /* Array+Extensions.swift */,
 				086F846424D997A00084571E /* UIAlertController+Extensions.swift */,
 			);
@@ -252,6 +259,8 @@
 		17740ECC2509F4F1009CDF15 /* BookmarkList */ = {
 			isa = PBXGroup;
 			children = (
+				176EB172250B4D8C008E50A6 /* BookmarkListCell.swift */,
+				176EB173250B4D8C008E50A6 /* BookmarkListCell.xib */,
 				17740ECD2509F54E009CDF15 /* BookmarkListViewController.swift */,
 				17740ECF2509F594009CDF15 /* BookmarkList.storyboard */,
 			);
@@ -347,6 +356,7 @@
 				083FD70924C33D2B00383122 /* Assets.xcassets in Resources */,
 				082CF76824D5A82F001F7680 /* SampleEventList.storyboard in Resources */,
 				17740ED02509F594009CDF15 /* BookmarkList.storyboard in Resources */,
+				176EB175250B4D8C008E50A6 /* BookmarkListCell.xib in Resources */,
 				17740EC425089CFE009CDF15 /* EventListCell.xib in Resources */,
 				17740ECB2509CF3E009CDF15 /* SortMenu.storyboard in Resources */,
 			);
@@ -460,9 +470,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				17740EC325089CFE009CDF15 /* EventListCell.swift in Sources */,
+				176EB174250B4D8C008E50A6 /* BookmarkListCell.swift in Sources */,
 				0841933724D9505800BFCBD3 /* Logger.swift in Sources */,
 				17740EC92509CF1C009CDF15 /* SortMenuViewController.swift in Sources */,
 				088E557A24D669AF00A2FE3E /* Array+Extensions.swift in Sources */,
+				176EB171250B411B008E50A6 /* Notification+extensions.swift in Sources */,
 				083FD70024C33D2900383122 /* AppDelegate.swift in Sources */,
 				088E557524D660B700A2FE3E /* SampleEventListCell.swift in Sources */,
 				082CF76B24D5D526001F7680 /* APIClient.swift in Sources */,

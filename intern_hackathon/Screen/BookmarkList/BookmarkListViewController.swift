@@ -14,12 +14,16 @@ class BookmarkListViewController: UIViewController {
     
     private var events: [Event] = []
     
+    private var bookmarkIDs: [Int] = []
+    
+    let userDefaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         
-        tableView.register(R.nib.eventListCell)
+        tableView.register(R.nib.bookmarkListCell)
         // UITableViewのdelegateらを受け持つ
         tableView.dataSource = self
         tableView.delegate = self
@@ -29,27 +33,48 @@ class BookmarkListViewController: UIViewController {
         
         tableView.tableHeaderView = voidView
         
+        print("--viewDidLoad--")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(book(notification:)), name: .book, object: nil)
     }
+    
+    @objc func book(notification: NSNotification?) {
+            guard let userinfo = notification?.userInfo,
+                let tag = userinfo["id"] as? Int, let bFlag: Bool = userinfo["flag"] as? Bool else { return }
+            
+            if bFlag {
+                
+                bookmarkIDs.append(tag)
+                
+            } else {
+                
+                if let index = bookmarkIDs.firstIndex(where: { $0 == tag }) {
+                    bookmarkIDs.remove(at: index)
+                }
+            }
+            
+            userDefaults.set(bookmarkIDs, forKey: "bookmarks")
+            userDefaults.set(true, forKey: String(tag))
+        }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         guard let eventIDs = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
-        if eventIDs.isEmpty {
-            tableView.reloadData()
-            return
-        }
-        searchEvents(eventIDs)
+
+        //searchEvents(eventIDs)
+        
+        print("--viewWillAppear--")
+        print(eventIDs)
+        
+        guard let bookmarks = userDefaults.array(forKey: "bookmarks") as? [Int] else { return }
+        bookmarkIDs = bookmarks
+        
+        searchEvents(bookmarks)
         tableView.reloadData()
         
-        print(eventIDs)
     }
-    
-    // tabで遷移したときにviewWillAppearが呼ばれない？
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        tableView.reloadData()
-    }
+    // tabで遷移したときにviewWillAppear系が呼ばれない
     
     func searchEvents(_ eventIDs: [Int]) {
         APIClient.fetchEventsByEventID(eventID: eventIDs) { [weak self] result in
@@ -79,15 +104,28 @@ extension BookmarkListViewController: UITableViewDataSource {
     // セル作成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.eventListCell, for: indexPath),
-            let event = events[safe: indexPath.row] else { return UITableViewCell() }
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.eventListCell, for: indexPath),
+//            let event = events[safe: indexPath.row] else { return UITableViewCell() }
+//
+//        // セルのタグにevent_idを登録
+//        guard let eventID: Int = event.eventID else {
+//            return UITableViewCell()
+//        }
+//        cell.tag = eventID
+//
+//        cell.set(event)
+//        return cell
+        //return UITableViewCell()
         
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.bookmarkListCell.identifier, for: indexPath) as? BookmarkListCell,
+            let event = events[safe: indexPath.row]  else { return UITableViewCell() }
+
         // セルのタグにevent_idを登録
         guard let eventID: Int = event.eventID else {
             return UITableViewCell()
         }
         cell.tag = eventID
-        
+
         cell.set(event)
         return cell
     }

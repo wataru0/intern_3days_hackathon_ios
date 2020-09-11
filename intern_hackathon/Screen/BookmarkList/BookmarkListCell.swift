@@ -9,14 +9,7 @@ import Foundation
 import Nuke
 import UIKit
 
-struct BookmarkCellData {
-    var eventId: Int
-    var title: String
-    var address: String
-    var url: String
-}
-
-class EventListCell: UITableViewCell {
+class BookmarkListCell: UITableViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleTextLabel: UILabel!
@@ -55,7 +48,7 @@ class EventListCell: UITableViewCell {
         // idを通知する
         bFlag = !bFlag
         
-        NotificationCenter.default.post(name: .event, object: nil, userInfo: ["id": tag, "flag": bFlag])
+        NotificationCenter.default.post(name: .book, object: nil, userInfo: ["id": tag, "flag": bFlag])
         
         if bFlag {
              bookmarkButton.setImage(UIImage(named: "bookOn"), for: .normal)

@@ -18,10 +18,13 @@ class EventListViewController: UIViewController {
     
     // APIレスポンスをデコードしたもの
     private var events: [Event] = []
-
+    
+    let userDefaults = UserDefaults.standard
+    
+    private var bookmarkIDs: [Int] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         // iOS13未満
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
@@ -40,18 +43,74 @@ class EventListViewController: UIViewController {
         //キャンセルボタンの追加
         searchBar.showsCancelButton = true
         searchBar.placeholder = "キーワードを入力"
-                
+        
         // searchBar 設置
         tableView.tableHeaderView = searchBar
         
         view.addSubview(tableView)
+        
+        //        NotificationCenter.default.addObserver(self, selector: #selector(testprint()) , name: .event, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(book(notification:)), name: .event, object: nil)
+    }
+        
+    @objc func testprint(notification: NSNotification?) {
+        guard let userinfo = notification?.userInfo,
+            let id = userinfo["id"] else { return }
+        print(id)
     }
     
+    @objc func book(notification: NSNotification?) {
+        guard let userinfo = notification?.userInfo,
+            let tag = userinfo["id"] as? Int, let bFlag: Bool = userinfo["flag"] as? Bool else { return }
+        
+        if bFlag {
+            
+            bookmarkIDs.append(tag)
+            // eventIDとそのスイッチの情報をuserDefaultsに保存
+            // すでに他のeventID格納されている場合
+//            if UserDefaults.standard.array(forKey: "bookmarks") != nil {
+//                guard var bookmarks = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
+//                bookmarks.append(tag)
+//                userDefaults.set(bookmarks, forKey: "bookmarks")
+//            } else {
+//                var bookmarks: [Int] = []
+//                bookmarks.append(tag)
+//                userDefaults.set(bookmarks, forKey: "bookmarks")
+//            }
+            
+//            userDefaults.set(true, forKey: String(tag))
+            
+            //bookmarkButton.isEnabled = true
+        } else {
+            
+            if let index = bookmarkIDs.firstIndex(where: { $0 == tag }) {
+                bookmarkIDs.remove(at: index)
+            }
+            
+//            // UserDefaultskからeventID配列取り出し
+//            guard var bookmarks = userDefaults.array(forKey: "bookmarks") as? [Int] else { return }
+//            guard let index = bookmarks.firstIndex(of: tag) else { return }
+//
+//
+//            // 値更新
+//            userDefaults.set(bookmarks, forKey: "bookmarks")
+//
+//            userDefaults.set(false, forKey: String(self.tag))
+            //bookmarkButton.isEnabled = true
+        }
+        
+        userDefaults.set(bookmarkIDs, forKey: "bookmarks")
+        userDefaults.set(true, forKey: String(tag))
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        
+        guard let bookmarks = userDefaults.array(forKey: "bookmarks") as? [Int] else { return }
+        bookmarkIDs = bookmarks
     }
-    
+
     // searchBarに入力された文字列で検索する
     func searchEvents(_ searchText: String) {
         APIClient.fetchEvents(keyword: searchText) { [weak self] result in
@@ -70,7 +129,7 @@ class EventListViewController: UIViewController {
             }
         }
     }
-    
+
 }
 
 extension EventListViewController: UISearchBarDelegate {
@@ -79,11 +138,11 @@ extension EventListViewController: UISearchBarDelegate {
         print(searchText)
         searchEvents(searchText)
         
-        if searchText == "Python" {
-            let token = UISearchToken(icon: nil, text: "Python")
-            self.searchBar.searchTextField.insertToken(token, at: 0)
-            self.searchBar.searchTextField.tokenBackgroundColor = .systemBlue
-        }
+        //        if searchText == "Python" {
+        //            let token = UISearchToken(icon: nil, text: "Python")
+        //            self.searchBar.searchTextField.insertToken(token, at: 0)
+        //            self.searchBar.searchTextField.tokenBackgroundColor = .systemBlue
+        //        }
     }
 }
 
@@ -95,18 +154,33 @@ extension EventListViewController: UITableViewDataSource {
     
     // セル作成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.eventListCell, for: indexPath),
-            let event = events[safe: indexPath.row] else { return UITableViewCell() }
+//        R.nib.eventListCell.identifier
         
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.eventListCell, for: indexPath),
+//            let event = events[safe: indexPath.row] else { return UITableViewCell() }
+//
+//        // セルのタグにevent_idを登録
+//        guard let eventID: Int = event.eventID else {
+//            return UITableViewCell()
+//        }
+//        cell.tag = eventID
+//
+//        cell.set(event)
+//        return cell
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.eventListCell.identifier, for: indexPath) as? EventListCell,
+            let event = events[safe: indexPath.row]  else { return UITableViewCell() }
+
         // セルのタグにevent_idを登録
         guard let eventID: Int = event.eventID else {
             return UITableViewCell()
         }
         cell.tag = eventID
-        
+
         cell.set(event)
         return cell
+        //return UITableViewCell()
+
     }
 }
 
@@ -114,7 +188,7 @@ extension EventListViewController: UITableViewDelegate {
     
     // セル選択した時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         guard let urlString = events[safe: indexPath.row]?.eventURL,
             let url = URL(string: urlString) else { return }
         
