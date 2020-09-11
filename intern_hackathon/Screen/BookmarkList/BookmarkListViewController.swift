@@ -24,7 +24,7 @@ class BookmarkListViewController: UIViewController {
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         
         tableView.register(R.nib.bookmarkListCell)
-
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -39,29 +39,29 @@ class BookmarkListViewController: UIViewController {
     }
     
     @objc func book(notification: NSNotification?) {
-            guard let userinfo = notification?.userInfo,
-                let tag = userinfo["id"] as? Int, let bFlag: Bool = userinfo["flag"] as? Bool else { return }
+        guard let userinfo = notification?.userInfo,
+            let tag = userinfo["id"] as? Int, let bFlag: Bool = userinfo["flag"] as? Bool else { return }
+        
+        if bFlag {
             
-            if bFlag {
-                
-                bookmarkIDs.append(tag)
-                
-            } else {
-                
-                if let index = bookmarkIDs.firstIndex(where: { $0 == tag }) {
-                    bookmarkIDs.remove(at: index)
-                }
+            bookmarkIDs.append(tag)
+            
+        } else {
+            
+            if let index = bookmarkIDs.firstIndex(where: { $0 == tag }) {
+                bookmarkIDs.remove(at: index)
             }
-            
-            userDefaults.set(bookmarkIDs, forKey: "bookmarks")
-            userDefaults.set(true, forKey: String(tag))
         }
+        
+        userDefaults.set(bookmarkIDs, forKey: "bookmarks")
+        userDefaults.set(true, forKey: String(tag))
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         guard let eventIDs = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
-
+        
         //searchEvents(eventIDs)
         
         print("--viewWillAppear--")
@@ -106,13 +106,13 @@ extension BookmarkListViewController: UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.bookmarkListCell.identifier, for: indexPath) as? BookmarkListCell,
             let event = events[safe: indexPath.row]  else { return UITableViewCell() }
-
+        
         // セルのタグにevent_idを登録
         guard let eventID: Int = event.eventID else {
             return UITableViewCell()
         }
         cell.tag = eventID
-
+        
         cell.set(event)
         return cell
     }
@@ -122,7 +122,7 @@ extension BookmarkListViewController: UITableViewDelegate {
     
     // セル選択した時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         guard let urlString = events[safe: indexPath.row]?.eventURL,
             let url = URL(string: urlString) else { return }
         

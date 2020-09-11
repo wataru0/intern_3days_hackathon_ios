@@ -17,7 +17,7 @@ struct BookmarkCellData {
 }
 
 class EventListCell: UITableViewCell {
-
+    
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleTextLabel: UILabel!
     @IBOutlet weak var descriptionTextLabel: UILabel!
@@ -47,16 +47,16 @@ class EventListCell: UITableViewCell {
             contentModes: .init(success: .scaleAspectFit, failure: .center, placeholder: .center))
         Nuke.loadImage(with: iconUrl, options: options, into: iconImageView)
     }
-
+    
     @IBAction func bookmarkButtonTapped(_ sender: Any) {
         bFlag = !bFlag
         
         NotificationCenter.default.post(name: .event, object: nil, userInfo: ["id": tag, "flag": bFlag])
         
         if bFlag {
-             bookmarkButton.setImage(UIImage(named: "bookOn"), for: .normal)
+            bookmarkButton.setImage(UIImage(named: "bookOn"), for: .normal)
         } else {
-             bookmarkButton.setImage(UIImage(named: "bookOff"), for: .normal)
+            bookmarkButton.setImage(UIImage(named: "bookOff"), for: .normal)
         }
     }
 }

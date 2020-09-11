@@ -10,7 +10,7 @@ import Nuke
 import UIKit
 
 class BookmarkListCell: UITableViewCell {
-
+    
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleTextLabel: UILabel!
     @IBOutlet weak var descriptionTextLabel: UILabel!
@@ -40,7 +40,7 @@ class BookmarkListCell: UITableViewCell {
             contentModes: .init(success: .scaleAspectFit, failure: .center, placeholder: .center))
         Nuke.loadImage(with: iconUrl, options: options, into: iconImageView)
     }
-
+    
     @IBAction func bookmarkButtonTapped(_ sender: Any) {
         // flg へんこう
         // idを通知する
@@ -49,9 +49,9 @@ class BookmarkListCell: UITableViewCell {
         NotificationCenter.default.post(name: .book, object: nil, userInfo: ["id": tag, "flag": bFlag])
         
         if bFlag {
-             bookmarkButton.setImage(UIImage(named: "bookOn"), for: .normal)
+            bookmarkButton.setImage(UIImage(named: "bookOn"), for: .normal)
         } else {
-             bookmarkButton.setImage(UIImage(named: "bookOff"), for: .normal)
+            bookmarkButton.setImage(UIImage(named: "bookOff"), for: .normal)
         }
     }
 }

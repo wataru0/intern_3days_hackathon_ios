@@ -35,7 +35,6 @@ class EventListViewController: UIViewController {
         
         // searchBarの作成
         searchBar = UISearchBar()
-        // searchBarのデリゲートを自分が受け取るということ
         searchBar.delegate = self
         
         //大きさの指定
@@ -49,14 +48,7 @@ class EventListViewController: UIViewController {
         
         view.addSubview(tableView)
         
-        //        NotificationCenter.default.addObserver(self, selector: #selector(testprint()) , name: .event, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(book(notification:)), name: .event, object: nil)
-    }
-        
-    @objc func testprint(notification: NSNotification?) {
-        guard let userinfo = notification?.userInfo,
-            let id = userinfo["id"] else { return }
-        print(id)
     }
     
     @objc func book(notification: NSNotification?) {
@@ -64,9 +56,7 @@ class EventListViewController: UIViewController {
             let tag = userinfo["id"] as? Int, let bFlag: Bool = userinfo["flag"] as? Bool else { return }
         
         if bFlag {
-            
             bookmarkIDs.append(tag)
-            
         } else {
             
             if let index = bookmarkIDs.firstIndex(where: { $0 == tag }) {
@@ -77,7 +67,7 @@ class EventListViewController: UIViewController {
         userDefaults.set(bookmarkIDs, forKey: "bookmarks")
         userDefaults.set(true, forKey: String(tag))
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -85,7 +75,7 @@ class EventListViewController: UIViewController {
         guard let bookmarks = userDefaults.array(forKey: "bookmarks") as? [Int] else { return }
         bookmarkIDs = bookmarks
     }
-
+    
     // searchBarに入力された文字列で検索する
     func searchEvents(_ searchText: String) {
         APIClient.fetchEvents(keyword: searchText) { [weak self] result in
@@ -104,7 +94,7 @@ class EventListViewController: UIViewController {
             }
         }
     }
-
+    
 }
 
 extension EventListViewController: UISearchBarDelegate {
@@ -126,13 +116,13 @@ extension EventListViewController: UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.eventListCell.identifier, for: indexPath) as? EventListCell,
             let event = events[safe: indexPath.row]  else { return UITableViewCell() }
-
+        
         // セルのタグにevent_idを登録
         guard let eventID: Int = event.eventID else {
             return UITableViewCell()
         }
         cell.tag = eventID
-
+        
         cell.set(event)
         return cell
     }
