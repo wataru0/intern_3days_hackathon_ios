@@ -27,6 +27,9 @@ class BookmarkListViewController: UIViewController {
         super.viewWillAppear(animated)
         
         guard let eventIDs = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
+        if eventIDs.isEmpty {
+            return
+        }
         searchEvents(eventIDs)
         tableView.reloadData()
         

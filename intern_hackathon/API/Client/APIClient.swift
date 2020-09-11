@@ -70,11 +70,13 @@ final class APIClient {
     }
     
     static func fetchEventsByEventID(eventID: [Int],
-                            completion: @escaping(Result<[Event], ErrorType>) -> Void ) {
-        
+                                     completion: @escaping(Result<[Event], ErrorType>) -> Void ) {
+        if eventID.isEmpty {
+            return
+        }
         var urlComps = URLComponents(string: "https://connpass.com/api/v1/event")!
         
-        var queryItems: [URLQueryItem] = [URLQueryItem(name: "count", value: "20"), URLQueryItem(name: "order", value: "3")]
+        var queryItems: [URLQueryItem] = [URLQueryItem(name: "order", value: "3")]
         
         for event in eventID {
             queryItems.append(URLQueryItem(name: "event_id", value: String(event)))
