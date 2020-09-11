@@ -24,7 +24,7 @@ class BookmarkListViewController: UIViewController {
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         
         tableView.register(R.nib.bookmarkListCell)
-        // UITableViewのdelegateらを受け持つ
+
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -103,19 +103,6 @@ extension BookmarkListViewController: UITableViewDataSource {
     
     // セル作成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.eventListCell, for: indexPath),
-//            let event = events[safe: indexPath.row] else { return UITableViewCell() }
-//
-//        // セルのタグにevent_idを登録
-//        guard let eventID: Int = event.eventID else {
-//            return UITableViewCell()
-//        }
-//        cell.tag = eventID
-//
-//        cell.set(event)
-//        return cell
-        //return UITableViewCell()
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.bookmarkListCell.identifier, for: indexPath) as? BookmarkListCell,
             let event = events[safe: indexPath.row]  else { return UITableViewCell() }

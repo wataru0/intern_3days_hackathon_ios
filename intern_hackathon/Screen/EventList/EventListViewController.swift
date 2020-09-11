@@ -66,37 +66,12 @@ class EventListViewController: UIViewController {
         if bFlag {
             
             bookmarkIDs.append(tag)
-            // eventIDとそのスイッチの情報をuserDefaultsに保存
-            // すでに他のeventID格納されている場合
-//            if UserDefaults.standard.array(forKey: "bookmarks") != nil {
-//                guard var bookmarks = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
-//                bookmarks.append(tag)
-//                userDefaults.set(bookmarks, forKey: "bookmarks")
-//            } else {
-//                var bookmarks: [Int] = []
-//                bookmarks.append(tag)
-//                userDefaults.set(bookmarks, forKey: "bookmarks")
-//            }
             
-//            userDefaults.set(true, forKey: String(tag))
-            
-            //bookmarkButton.isEnabled = true
         } else {
             
             if let index = bookmarkIDs.firstIndex(where: { $0 == tag }) {
                 bookmarkIDs.remove(at: index)
             }
-            
-//            // UserDefaultskからeventID配列取り出し
-//            guard var bookmarks = userDefaults.array(forKey: "bookmarks") as? [Int] else { return }
-//            guard let index = bookmarks.firstIndex(of: tag) else { return }
-//
-//
-//            // 値更新
-//            userDefaults.set(bookmarks, forKey: "bookmarks")
-//
-//            userDefaults.set(false, forKey: String(self.tag))
-            //bookmarkButton.isEnabled = true
         }
         
         userDefaults.set(bookmarkIDs, forKey: "bookmarks")
@@ -137,12 +112,6 @@ extension EventListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
         searchEvents(searchText)
-        
-        //        if searchText == "Python" {
-        //            let token = UISearchToken(icon: nil, text: "Python")
-        //            self.searchBar.searchTextField.insertToken(token, at: 0)
-        //            self.searchBar.searchTextField.tokenBackgroundColor = .systemBlue
-        //        }
     }
 }
 
@@ -154,19 +123,6 @@ extension EventListViewController: UITableViewDataSource {
     
     // セル作成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        R.nib.eventListCell.identifier
-        
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.eventListCell, for: indexPath),
-//            let event = events[safe: indexPath.row] else { return UITableViewCell() }
-//
-//        // セルのタグにevent_idを登録
-//        guard let eventID: Int = event.eventID else {
-//            return UITableViewCell()
-//        }
-//        cell.tag = eventID
-//
-//        cell.set(event)
-//        return cell
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.eventListCell.identifier, for: indexPath) as? EventListCell,
             let event = events[safe: indexPath.row]  else { return UITableViewCell() }
@@ -179,8 +135,6 @@ extension EventListViewController: UITableViewDataSource {
 
         cell.set(event)
         return cell
-        //return UITableViewCell()
-
     }
 }
 

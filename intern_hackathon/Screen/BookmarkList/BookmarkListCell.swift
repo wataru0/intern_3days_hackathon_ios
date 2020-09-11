@@ -19,8 +19,6 @@ class BookmarkListCell: UITableViewCell {
     // ブックマーク情報を保持する
     let userDefaults = UserDefaults.standard
     
-    //var bookmark: BookmarkCellData?
-    
     // buttonの状態，true:押されている
     var bFlag: Bool = false
     
@@ -55,47 +53,5 @@ class BookmarkListCell: UITableViewCell {
         } else {
              bookmarkButton.setImage(UIImage(named: "bookOff"), for: .normal)
         }
-//        if bFlag {
-//            // 多重タップ防止
-//            //bookmarkButton.isEnabled = false
-//            bookmarkButton.setImage(UIImage(named: "bookOn"), for: .normal)
-//
-//            // eventIDとそのスイッチの情報をuserDefaultsに保存
-//            // すでに他のeventID格納されている場合
-//            if UserDefaults.standard.array(forKey: "bookmarks") != nil {
-//                guard var bookmarks = UserDefaults.standard.array(forKey: "bookmarks") as? [Int] else { return }
-//                bookmarks.append(self.tag)
-//                userDefaults.set(bookmarks, forKey: "bookmarks")
-//            } else {
-//                var bookmarks: [Int] = []
-//                bookmarks.append(self.tag)
-//                userDefaults.set(bookmarks, forKey: "bookmarks")
-//            }
-//
-//            userDefaults.set(true, forKey: String(self.tag))
-//
-//            //bookmarkButton.isEnabled = true
-//        } else {
-//            // 多重タップ防止
-//            //bookmarkButton.isEnabled = false
-//            bookmarkButton.setImage(UIImage(named: "bookOff"), for: .normal)
-//
-//            // UserDefaultskからeventID配列取り出し
-//           guard var bookmarks = userDefaults.array(forKey: "bookmarks") as? [Int] else { return }
-//            guard let index = bookmarks.firstIndex(of: self.tag) else { return }
-//            // 配列から削除
-//            if index == 0 {
-//                bookmarks.removeAll()
-//            } else {
-//                bookmarks.remove(at: index)
-//            }
-//
-//            // 値更新
-//            userDefaults.set(bookmarks, forKey: "bookmarks")
-//
-//            userDefaults.set(false, forKey: String(self.tag))
-//            //bookmarkButton.isEnabled = true
-//        }
-//    }
     }
 }
