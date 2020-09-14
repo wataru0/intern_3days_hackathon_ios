@@ -39,6 +39,7 @@
 		17740ED02509F594009CDF15 /* BookmarkList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17740ECF2509F594009CDF15 /* BookmarkList.storyboard */; };
 		17740ED3250A07A4009CDF15 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17740ED2250A07A4009CDF15 /* MainViewController.swift */; };
 		17740ED5250A08AD009CDF15 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17740ED4250A08AC009CDF15 /* MainView.storyboard */; };
+		17F87801250F3168002882F1 /* BookmarkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F87800250F3168002882F1 /* BookmarkItem.swift */; };
 		2017271045FB6B89A55D92F2 /* Pods_intern_hackathon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C21F34E1FD044BE6C41F8B /* Pods_intern_hackathon.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		17740ECF2509F594009CDF15 /* BookmarkList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookmarkList.storyboard; sourceTree = "<group>"; };
 		17740ED2250A07A4009CDF15 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		17740ED4250A08AC009CDF15 /* MainView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
+		17F87800250F3168002882F1 /* BookmarkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkItem.swift; sourceTree = "<group>"; };
 		43C21F34E1FD044BE6C41F8B /* Pods_intern_hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intern_hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A39CFCAD63C3D6FA4DD5CDF6 /* Pods-intern_hackathon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intern_hackathon.release.xcconfig"; path = "Target Support Files/Pods-intern_hackathon/Pods-intern_hackathon.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +187,7 @@
 		088E557724D6698900A2FE3E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				17F877FF250F313C002882F1 /* DataBase */,
 				088E557824D6699500A2FE3E /* Extensions */,
 			);
 			path = Utils;
@@ -274,6 +277,14 @@
 				17740ED4250A08AC009CDF15 /* MainView.storyboard */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		17F877FF250F313C002882F1 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				17F87800250F3168002882F1 /* BookmarkItem.swift */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 		49CE6C293BB931D5A9E0F7E8 /* Pods */ = {
@@ -479,6 +490,7 @@
 				088E557524D660B700A2FE3E /* SampleEventListCell.swift in Sources */,
 				082CF76B24D5D526001F7680 /* APIClient.swift in Sources */,
 				082CF76324D59281001F7680 /* R.generated.swift in Sources */,
+				17F87801250F3168002882F1 /* BookmarkItem.swift in Sources */,
 				082CF76524D5A5B9001F7680 /* SampleEventListViewController.swift in Sources */,
 				088E557D24D7190300A2FE3E /* MainTabBarController.swift in Sources */,
 				08C5FE2624CD7A8B007100CA /* Event.swift in Sources */,

@@ -10,4 +10,5 @@ target 'intern_hackathon' do
   # pod 'DropdownMenu'
   # pod 'BTNavigationDropdownMenu'
   pod 'Parchment'
+  pod 'RealmSwift'
 end
