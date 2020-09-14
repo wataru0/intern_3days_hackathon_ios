@@ -16,7 +16,7 @@ class BookmarkListViewController: UIViewController {
     
     private var bookmarkIDs: [Int] = []
     
-    let userDefaults = UserDefaults.standard
+    private let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,16 +45,19 @@ class BookmarkListViewController: UIViewController {
         if bFlag {
             
             bookmarkIDs.append(tag)
+            userDefaults.set(true, forKey: String(tag))
             
         } else {
             
+            // この書き方，重要．業務でも使うらしい．
             if let index = bookmarkIDs.firstIndex(where: { $0 == tag }) {
                 bookmarkIDs.remove(at: index)
             }
+            userDefaults.set(false, forKey: String(tag))
         }
         
         userDefaults.set(bookmarkIDs, forKey: "bookmarks")
-        userDefaults.set(true, forKey: String(tag))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

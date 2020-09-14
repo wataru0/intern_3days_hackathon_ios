@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Notificationを使うと子から親へ値を送ったりすることができる．
+// 値を送れる．
 extension Notification.Name {
     static let event = Notification.Name("event")
     static let book = Notification.Name("book")

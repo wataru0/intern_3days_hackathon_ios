@@ -51,21 +51,24 @@ class EventListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(book(notification:)), name: .event, object: nil)
     }
     
+    // Cellで変更があった場合，このViewControllerにあらかじめ設定した値が送られる．
     @objc func book(notification: NSNotification?) {
         guard let userinfo = notification?.userInfo,
             let tag = userinfo["id"] as? Int, let bFlag: Bool = userinfo["flag"] as? Bool else { return }
         
         if bFlag {
             bookmarkIDs.append(tag)
+            userDefaults.set(true, forKey: String(tag))
         } else {
             
             if let index = bookmarkIDs.firstIndex(where: { $0 == tag }) {
                 bookmarkIDs.remove(at: index)
             }
+            userDefaults.set(false, forKey: String(tag))
         }
         
         userDefaults.set(bookmarkIDs, forKey: "bookmarks")
-        userDefaults.set(true, forKey: String(tag))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

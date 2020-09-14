@@ -9,7 +9,7 @@ import Foundation
 import Nuke
 import UIKit
 
-class BookmarkListCell: UITableViewCell {
+final class BookmarkListCell: UITableViewCell {
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleTextLabel: UILabel!
@@ -17,7 +17,7 @@ class BookmarkListCell: UITableViewCell {
     @IBOutlet weak var bookmarkButton: UIButton!
     
     // ブックマーク情報を保持する
-    let userDefaults = UserDefaults.standard
+    private let userDefaults = UserDefaults.standard
     
     // buttonの状態，true:押されている
     var bFlag: Bool = false
@@ -34,11 +34,17 @@ class BookmarkListCell: UITableViewCell {
         }
         
         // icon設定
-        let url = "https://connpass.com/static/img/468_468.png"
-        guard let iconUrl = URL(string: url) else { return }
+        let iconurl = "https://connpass.com/static/img/468_468.png"
+        
+        //  画像の貼り付け
+        setIcon(iconurl)
+    }
+    
+    func setIcon(_ url: String) {
+        guard let iconURL = URL(string: url) else { return }
         let options = ImageLoadingOptions(
             contentModes: .init(success: .scaleAspectFit, failure: .center, placeholder: .center))
-        Nuke.loadImage(with: iconUrl, options: options, into: iconImageView)
+        Nuke.loadImage(with: iconURL, options: options, into: iconImageView)
     }
     
     @IBAction func bookmarkButtonTapped(_ sender: Any) {
