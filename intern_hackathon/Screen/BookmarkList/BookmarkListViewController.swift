@@ -73,7 +73,14 @@ class BookmarkListViewController: UIViewController {
         guard let bookmarks = userDefaults.array(forKey: "bookmarks") as? [Int] else { return }
         bookmarkIDs = bookmarks
         
-        searchEvents(bookmarks)
+        if !bookmarks.isEmpty {
+            searchEvents(bookmarks)
+            print("空じゃ無い")
+        } else {
+            print("空だよ")
+            
+        }
+        
         tableView.reloadData()
         
     }

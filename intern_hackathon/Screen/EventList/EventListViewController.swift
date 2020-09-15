@@ -59,6 +59,7 @@ class EventListViewController: UIViewController {
         if bFlag {
             bookmarkIDs.append(tag)
             userDefaults.set(true, forKey: String(tag))
+//            DataBaseController.addBookmark(eventID: tag)
         } else {
             
             if let index = bookmarkIDs.firstIndex(where: { $0 == tag }) {
