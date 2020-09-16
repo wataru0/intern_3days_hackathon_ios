@@ -1,10 +1,13 @@
 import Foundation
 
+// Codable : API通信等で取得したJASONを任意のデータ型に変換するプロトコル
 struct Events: Codable {
     var resultsStart, resultsReturned, resultsAvailable: Int
     var events: [Event]
 
+    // CodingKeys : encode（フィールド名）とdecode（上で定義したプロパティ）でキー名(名前)が異なるときに一対一対応させることができる
     enum CodingKeys: String, CodingKey {
+        // case名をプロパティ名，rawValueをエンコード結果のフィールド名として定義
         case resultsStart = "results_start"
         case resultsReturned = "results_returned"
         case resultsAvailable = "results_available"
